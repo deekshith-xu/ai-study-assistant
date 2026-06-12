@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Notes Generator</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+
+        <div class="logo">
+            🤖 AI Study Assistant
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="notes.html">Notes</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="chatbot.html">AI Chat</a></li>
+            <li><a href="progress.html">Progress</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<section class="hero">
+
+    <h1>📚 AI Notes Generator</h1>
+
+    <p>
+        Generate smart study notes instantly using AI.
+    </p>
+
+</section>
+
+<section class="generator">
+
+    <div class="generator-card">
+
+        <h2>Create Notes</h2>
+
+        <input
+            type="text"
+            id="topic"
+            placeholder="Enter Topic">
+
+        <select id="level">
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+        </select>
+
+        <button onclick="generateNotes()">
+            Generate Notes
+        </button>
+
+    </div>
+
+</section>
+
+<section id="outputSection" class="output-section">
+
+    <div class="output-card">
+
+        <h2 id="title"></h2>
+
+        <h3>Summary</h3>
+
+        <p id="summary"></p>
+
+        <h3>Key Points</h3>
+
+        <ul id="points"></ul>
+
+        <h3>Study Tips</h3>
+
+        <p id="tips"></p>
+
+        <button onclick="downloadNotes()">
+            Download Notes
+        </button>
+
+    </div>
+
+</section>
+
+<section class="features">
+
+    <h2>AI Features</h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <h3>⚡ Instant Notes</h3>
+            <p>Generate notes within seconds.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🧠 Smart Summary</h3>
+            <p>Easy-to-understand explanations.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🎯 Exam Revision</h3>
+            <p>Important points for exams.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📄 Download Notes</h3>
+            <p>Save notes offline.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+function generateNotes(){
+
+let topic =
+document.getElementById("topic").value;
+
+let level =
+document.getElementById("level").value;
+
+if(topic==""){
+alert("Enter a topic");
+return;
+}
+
+document.getElementById("outputSection").style.display="block";
+
+document.getElementById("title").innerHTML=
+topic + " - " + level;
+
+document.getElementById("summary").innerHTML=
+topic +
+" is an important topic. Understanding the fundamentals helps build strong knowledge and practical skills.";
+
+document.getElementById("points").innerHTML=
+`
+<li>Introduction to ${topic}</li>
+<li>Main concepts</li>
+<li>Applications</li>
+<li>Advantages</li>
+<li>Revision Points</li>
+`;
+
+document.getElementById("tips").innerHTML=
+"Revise daily, practice questions and focus on conceptual understanding.";
+
+}
+
+function downloadNotes(){
+
+let content =
+document.querySelector(".output-card").innerText;
+
+let blob =
+new Blob([content], {type:"text/plain"});
+
+let a =
+document.createElement("a");
+
+a.href =
+URL.createObjectURL(blob);
+
+a.download =
+"AI_Notes.txt";
+
+a.click();
+
+}
+
+</script>
+
+</body>
+</html>

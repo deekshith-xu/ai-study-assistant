@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Study Assistant Chatbot</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+🤖 AI Study Assistant
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="notes.html">Notes</a></li>
+<li><a href="quiz.html">Quiz</a></li>
+<li><a href="chatbot.html">AI Chat</a></li>
+<li><a href="progress.html">Progress</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h1>💬 AI Study Chatbot</h1>
+
+<p>
+Ask questions, get explanations,
+study tips and learning support.
+</p>
+
+</section>
+
+<section class="features">
+
+<div class="feature-card">
+<h3>📚 Subject Expert</h3>
+<p>Math, Science, Programming and more.</p>
+</div>
+
+<div class="feature-card">
+<h3>🧠 Smart Explanations</h3>
+<p>Easy-to-understand answers.</p>
+</div>
+
+<div class="feature-card">
+<h3>⚡ Instant Responses</h3>
+<p>Fast doubt solving.</p>
+</div>
+
+<div class="feature-card">
+<h3>🎯 Personalized Learning</h3>
+<p>Customized study assistance.</p>
+</div>
+
+</section>
+
+<section class="chat-section">
+
+<div class="chat-container">
+
+<div class="chat-header">
+🤖 AI Assistant Online
+</div>
+
+<div class="chat-box" id="chatBox">
+
+<div class="bot-message">
+Hello 👋<br>
+I am your AI Study Assistant.<br>
+Ask me anything about your studies.
+</div>
+
+</div>
+
+<div class="quick-buttons">
+
+<button onclick="quickQuestion('What is Artificial Intelligence?')">
+What is AI?
+</button>
+
+<button onclick="quickQuestion('Explain Machine Learning')">
+Machine Learning
+</button>
+
+<button onclick="quickQuestion('Give study tips')">
+Study Tips
+</button>
+
+<button onclick="quickQuestion('How to prepare for exams?')">
+Exam Preparation
+</button>
+
+</div>
+
+<div class="input-area">
+
+<input
+type="text"
+id="userInput"
+placeholder="Ask your question...">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 AI Study Assistant
+</p>
+
+</footer>
+
+<script>
+
+function sendMessage(){
+
+let input =
+document.getElementById("userInput");
+
+let message =
+input.value.trim();
+
+if(message===""){
+return;
+}
+
+let chatBox =
+document.getElementById("chatBox");
+
+chatBox.innerHTML +=
+`
+<div class="user-message">
+${message}
+</div>
+`;
+
+let response = "";
+
+if(message.toLowerCase().includes("ai")){
+
+response =
+"Artificial Intelligence (AI) is the simulation of human intelligence by machines.";
+
+}
+else if(message.toLowerCase().includes("machine learning")){
+
+response =
+"Machine Learning is a branch of AI where systems learn from data.";
+
+}
+else if(message.toLowerCase().includes("study")){
+
+response =
+"Study daily, revise regularly and practice questions consistently.";
+
+}
+else if(message.toLowerCase().includes("exam")){
+
+response =
+"Create a timetable, revise concepts and solve previous papers.";
+
+}
+else{
+
+response =
+"This is a demo chatbot. Connect an AI API for real intelligent responses.";
+
+}
+
+chatBox.innerHTML +=
+`
+<div class="bot-message">
+${response}
+</div>
+`;
+
+input.value="";
+
+chatBox.scrollTop =
+chatBox.scrollHeight;
+
+}
+
+function quickQuestion(text){
+
+document.getElementById(
+"userInput"
+).value=text;
+
+sendMessage();
+
+}
+
+</script>
+
+</body>
+</html>
